@@ -1,0 +1,11 @@
+academy\digitallab\store\product\entity\Product$ProductBuilder.class
+academy\digitallab\store\product\controller\ErrorMessage$ErrorMessageBuilder.class
+academy\digitallab\store\product\service\ProductService.class
+academy\digitallab\store\product\controller\ErrorMessage.class
+academy\digitallab\store\product\ProductServiceApplication.class
+academy\digitallab\store\product\repository\ProductRepository.class
+academy\digitallab\store\product\entity\Product.class
+academy\digitallab\store\product\service\ProductServiceImpl.class
+academy\digitallab\store\product\entity\Category.class
+academy\digitallab\store\product\controller\ProductController.class
+academy\digitallab\store\product\entity\Category$CategoryBuilder.class

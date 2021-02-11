@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: composite
+  cloud:
+    config:
+      server:   
+        git:
+          basedir: file:////Users/Ing_O/eclipse-workspace/Spring-cloud/config-service/src/main/resources/config
+            
+  security:
+    user:
+      name: 0II4r
+      password: I045301210
