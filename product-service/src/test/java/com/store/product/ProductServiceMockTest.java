@@ -1,4 +1,4 @@
-package academy.digitallab.store.product;
+package com.store.product;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

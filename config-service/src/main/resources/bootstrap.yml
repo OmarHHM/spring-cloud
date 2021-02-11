@@ -8,7 +8,10 @@ spring:
     config:
       server:   
         git:
-          basedir: file:////Users/Ing_O/eclipse-workspace/Spring-cloud/config-service/src/main/resources/config
+          uri: https://github.com/OmarHHM/spring-cloud.git
+          searchPath: config
+          username: ${GIT_USER}
+          password: ${GIT_PWD}
             
   security:
     user:
