@@ -1,18 +1,18 @@
 server:
   port: 8081
 
+
+
 spring:
-  profiles:
-    active: composite
   cloud:
     config:
-      server:   
+      server:
         git:
           uri: https://github.com/OmarHHM/spring-cloud.git
-          searchPath: config
+          searchPaths: config
           username: ${GIT_USER}
           password: ${GIT_PWD}
-            
+          default-label: "master"
   security:
     user:
       name: 0II4r
