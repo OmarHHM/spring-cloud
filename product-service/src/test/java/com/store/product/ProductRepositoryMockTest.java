@@ -12,13 +12,13 @@ import com.store.product.repository.ProductRepository;
 import java.util.Date;
 import java.util.List;
 
-@DataJpaTest
+//@DataJpaTest
 public class ProductRepositoryMockTest {
 
     @Autowired
     private ProductRepository productRepository;
 
-    @Test
+  //  @Test
     public void whenFindByCategory_thenReturnListProduct(){
         Product product01 = Product.builder()
                 .name("computer")

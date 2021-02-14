@@ -2,6 +2,5 @@ spring:
   application:
     name: product-service
   cloud:    config:      uri: http://localhost:8081
-      username: ${SEC_CONFIG_USER}
-      password: ${SEC_CONFIG_PWD}
-        
+      username: 0II4r
+      password: I045301210        

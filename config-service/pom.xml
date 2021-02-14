@@ -6,13 +6,13 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.4.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+	    <relativePath>../../build-services</relativePath>
 	</parent>
 	
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.heroku</groupId>
+	<groupId>com.store</groupId>
 	<artifactId>config-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>config-service</name>
 	<description>Configurations Project</description>
 	<properties>

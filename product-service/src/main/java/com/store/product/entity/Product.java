@@ -40,6 +40,10 @@ public class Product {
     @Positive(message = "El stock debe ser mayor que cero")
     private Double stock;
     private Double price;
+    
+    @Column(name = "url_photo")
+    private String urlPhoto;
+
     private String status;
 
     @Column(name = "create_at")
@@ -51,4 +55,14 @@ public class Product {
     @JoinColumn(name = "category_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     private Category category;
+
+    @NotNull(message = "La subcategoria no puede ser vacia")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sub_category_id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    private SubCategory subCategory;
+
+    
+    
+    
 }

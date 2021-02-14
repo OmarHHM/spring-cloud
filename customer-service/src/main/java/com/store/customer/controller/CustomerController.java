@@ -27,6 +27,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.store.customer.repository.entity.Customer;
 import com.store.customer.repository.entity.Region;
+import com.store.customer.repository.entity.State;
 import com.store.customer.service.CustomerService;
 import com.store.customer.util.ErrorMessage;
 
@@ -43,19 +44,17 @@ public class CustomerController {
     // -------------------Retrieve All Customers--------------------------------------------
 
     @GetMapping
-    public ResponseEntity<List<Customer>> listAllCustomers(@RequestParam(name = "regionId" , required = false) Long regionId ) {
+    public ResponseEntity<List<Customer>> listAllCustomers(@RequestParam(name = "status" , required = false) String status ) {
         List<Customer> customers =  new ArrayList<>();
-        if (null ==  regionId) {
+        if (null ==  status) {
             customers = customerService.findCustomerAll();
             if (customers.isEmpty()) {
                 return ResponseEntity.noContent().build();
             }
         }else{
-            Region Region= new Region();
-            Region.setId(regionId);
-            customers = customerService.findCustomersByRegion(Region);
+            customers = customerService.findCustomersByStatus(status);
             if ( null == customers ) {
-                log.error("Customers with Region id {} not found.", regionId);
+                log.error("Customers with status  {} not found.", status);
                 return  ResponseEntity.notFound().build();
             }
         }

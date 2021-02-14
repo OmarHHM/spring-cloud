@@ -16,15 +16,15 @@ import com.store.product.service.ProductServiceImpl;
 
 import java.util.Optional;
 
-@SpringBootTest
+//@SpringBootTest
 public class ProductServiceMockTest {
 
-    @Mock
+  //  @Mock
     private ProductRepository productRepository;
 
     private ProductService productService;
 
-    @BeforeEach
+    //@BeforeEach
     public void setup(){
         MockitoAnnotations.initMocks(this);
         productService =  new ProductServiceImpl( productRepository);
@@ -42,14 +42,14 @@ public class ProductServiceMockTest {
 
     }
 
-    @Test
+  //  @Test
    public void whenValidGetID_ThenReturnProduct(){
         Product found = productService.getProduct(1L);
        Assertions.assertThat(found.getName()).isEqualTo("computer");
 
    }
 
-   @Test
+//   @Test
    public void whenValidUpdateStock_ThenReturnNewStock(){
         Product newStock = productService.updateStock(1L,Double.parseDouble("8"));
         Assertions.assertThat(newStock.getStock()).isEqualTo(13);

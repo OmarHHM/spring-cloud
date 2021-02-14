@@ -1,22 +1,20 @@
 package com.store.customer.repository.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -25,14 +23,16 @@ import lombok.Data;
 @Table(name="tbl_customers")
 public class Customer implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message = "El número de documento no puede ser vacío")
-    @Size( min = 8 , max = 8, message = "El tamaño del número de documento es 8")
-    @Column(name = "number_id" , unique = true ,length = 8, nullable = false)
-    private String numberID;
+    @NotEmpty(message = "El número de telefono no puede ser vacío")
+    @Size( min = 10 , max = 10, message = "El tamaño del número de teléfono es 10")
+    @Column(name = "phone_number" , unique = true ,length = 8, nullable = false)
+    private String phoneNumber;
 
     @NotEmpty(message = "El nombre no puede ser vacío")
     @Column(name="first_name", nullable=false)
@@ -49,13 +49,13 @@ public class Customer implements Serializable {
 
     @Column(name="photo_url")
     private String photoUrl;
-
-
-    @NotNull(message = "la región no puede ser vacia")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id")
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    private Region region;
-
-    private String state;
+    
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Set<Address> addresses;
+    
+    private String status;
+    
+    
+        
 }

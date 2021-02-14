@@ -1,14 +1,14 @@
 package com.store.customer.service;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.store.customer.repository.CustomerRepository;
 import com.store.customer.repository.entity.Customer;
-import com.store.customer.repository.entity.Region;
 
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class CustomerServiceImpl  implements CustomerService {
@@ -22,19 +22,19 @@ public class CustomerServiceImpl  implements CustomerService {
     }
 
     @Override
-    public List<Customer> findCustomersByRegion(Region region) {
-        return customerRepository.findByRegion(region);
+    public List<Customer> findCustomersByStatus(String status) {
+        return customerRepository.findByStatus(status);
     }
 
     @Override
     public Customer createCustomer(Customer customer) {
 
-        Customer customerDB = customerRepository.findByNumberID ( customer.getNumberID () );
+        Customer customerDB = customerRepository.findByEmail ( customer.getEmail() );
         if (customerDB != null){
             return  customerDB;
         }
 
-        customer.setState("CREATED");
+        customer.setStatus("CREATED");
         customerDB = customerRepository.save ( customer );
         return customerDB;
     }
@@ -59,7 +59,7 @@ public class CustomerServiceImpl  implements CustomerService {
         if (customerDB ==null){
             return  null;
         }
-        customer.setState("DELETED");
+        customer.setStatus("DELETED");
         return customerRepository.save(customer);
     }
 
